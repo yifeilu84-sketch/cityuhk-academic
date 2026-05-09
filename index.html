@@ -6,87 +6,77 @@
 <title>CityUHK 学术导航 — 香港城市大学 · 学院→学系→教授→课题组</title>
 <style>
 :root {
-  --coral: #E85D5D; --coral-light: #FF8E72; --golden: #E8A838; --golden-light: #F5C26B;
-  --teal: #2A9D8F; --teal-light: #5CBFB0; --bg-warm: #FFFBF5; --bg-card: #FFFFFF;
-  --bg-section: #FFF0E8; --text-primary: #3D2C2C; --text-secondary: #6B5555;
-  --text-muted: #8C7575; --border: #F0E0D0;
-  --shadow-soft: 0 2px 16px rgba(100,60,30,0.07); --shadow-card: 0 4px 24px rgba(100,60,30,0.09);
-  --shadow-hover: 0 8px 32px rgba(100,60,30,0.13); --radius-sm: 10px; --radius: 16px; --radius-lg: 22px;
-  --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  --ink: #1a1a24; --ink-light: #3d3d50; --muted: #6b6b7e; --faint: #a0a0b0;
+  --accent: #3b5ccc; --accent-light: #eef1fb; --accent-dark: #2a43a0;
+  --bg: #fafafc; --surface: #ffffff; --surface-hover: #f5f5fa;
+  --border: #e4e4ed; --divider: #f0f0f5;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.04); --shadow-md: 0 4px 16px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.08);
+  --radius-sm: 6px; --radius: 10px; --radius-lg: 14px;
+  --transition: 0.2s ease;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Segoe UI','PingFang SC','Microsoft YaHei',-apple-system,sans-serif;background:var(--bg-warm);color:var(--text-primary);line-height:1.6;min-height:100vh}
-.header{background:linear-gradient(135deg,#E85D5D 0%,#F08C5A 30%,#E8A838 70%,#F5C26B 100%);padding:48px 24px 40px;text-align:center;position:relative;overflow:hidden}
-.header::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:rgba(255,255,255,0.08);border-radius:50%}
-.header::after{content:'';position:absolute;bottom:-40px;left:-40px;width:160px;height:160px;background:rgba(255,255,255,0.06);border-radius:50%}
-.header h1{font-size:2.4rem;font-weight:700;color:#fff;position:relative;z-index:1;text-shadow:0 2px 8px rgba(0,0,0,0.12)}
-.header p{font-size:1.05rem;color:rgba(255,255,255,0.92);margin-top:8px;position:relative;z-index:1}
-.header .credit{font-size:0.85rem;color:rgba(255,255,255,0.8);margin-top:4px;position:relative;z-index:1}
-.container{max-width:1200px;margin:0 auto;padding:28px 20px 60px}
-.breadcrumb{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:28px;padding:14px 20px;background:var(--bg-card);border-radius:var(--radius-sm);box-shadow:var(--shadow-soft)}
-.breadcrumb-item{font-size:0.9rem;font-weight:500;color:var(--coral);cursor:pointer;transition:var(--transition)}
-.breadcrumb-item:hover{color:var(--coral-light);text-decoration:underline}
-.breadcrumb-sep{color:var(--text-muted);font-size:0.85rem}
-.breadcrumb-item.active{color:var(--text-primary);cursor:pointer;font-weight:600}
-.breadcrumb-item.active:hover{color:var(--coral-light);text-decoration:underline}
-.section-title{font-size:1.5rem;font-weight:700;color:var(--text-primary);margin-bottom:20px;display:flex;align-items:center;gap:10px}
-.section-title .icon{font-size:1.5rem}
-.section-title .count{font-size:0.85rem;font-weight:500;color:var(--text-muted);background:var(--bg-section);padding:3px 12px;border-radius:20px;margin-left:6px}
-.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+body{font-family:'Inter','Segoe UI','PingFang SC','Microsoft YaHei',-apple-system,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;min-height:100vh;-webkit-font-smoothing:antialiased}
+.header{background:var(--ink);padding:44px 24px 36px;text-align:center}
+.header h1{font-size:2rem;font-weight:700;color:#fff;letter-spacing:-0.02em}
+.header p{font-size:0.95rem;color:rgba(255,255,255,0.65);margin-top:6px;font-weight:400}
+.header .credit{font-size:0.8rem;color:rgba(255,255,255,0.45);margin-top:4px}
+.container{max-width:1160px;margin:0 auto;padding:24px 20px 56px}
+.breadcrumb{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:24px;font-size:0.85rem;color:var(--muted)}
+.breadcrumb-item{font-weight:500;color:var(--accent);cursor:pointer;transition:var(--transition)}
+.breadcrumb-item:hover{color:var(--accent-dark);text-decoration:underline;text-underline-offset:3px}
+.breadcrumb-sep{color:var(--faint);font-size:0.8rem;margin:0 2px}
+.breadcrumb-item.active{color:var(--ink);cursor:pointer;font-weight:600}
+.breadcrumb-item.active:hover{color:var(--accent);text-decoration:none}
+.section-title{font-size:1.3rem;font-weight:650;color:var(--ink);margin-bottom:18px;display:flex;align-items:center;gap:8px;letter-spacing:-0.01em}
+.section-title .icon{font-size:1.3rem}
+.section-title .count{font-size:0.8rem;font-weight:500;color:var(--muted);background:var(--divider);padding:2px 10px;border-radius:12px;margin-left:4px}
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
 .card-grid.dept{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
 .card-grid.prof{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
-.card{background:var(--bg-card);border-radius:var(--radius);padding:22px 24px;cursor:pointer;transition:var(--transition);border:2px solid transparent;box-shadow:var(--shadow-card);position:relative;overflow:hidden}
-.card:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover)}
-.card::after{content:'→';position:absolute;right:20px;top:50%;transform:translateY(-50%);font-size:1.2rem;color:#ddd;transition:var(--transition)}
-.card:hover::after{color:var(--coral);right:16px}
-.college-card{border-left:5px solid var(--coral)}
-.college-card:hover{border-color:var(--coral)}
-.college-card .card-icon{font-size:2rem;margin-bottom:8px}
-.dept-card{border-left:5px solid var(--golden)}
-.dept-card:hover{border-color:var(--golden)}
-.dept-card .card-icon{font-size:1.6rem;margin-bottom:4px}
-.prof-card{border-left:5px solid var(--teal)}
-.prof-card:hover{border-color:var(--teal)}
-.prof-card .ug-badge{position:absolute;top:12px;right:12px;background:#E8F5E9;color:#2E7D32;font-size:0.7rem;font-weight:600;padding:2px 8px;border-radius:10px}
-.card h3{font-size:1.1rem;font-weight:650;color:var(--text-primary);margin-bottom:4px}
-.card .subtitle{font-size:0.85rem;color:var(--text-muted)}
-.card .cn-name{font-size:0.88rem;color:var(--coral);font-weight:550}
-.card .dept-tag{display:inline-block;font-size:0.78rem;font-weight:500;color:var(--teal);background:#E8F5F2;padding:2px 10px;border-radius:12px;margin-top:6px}
-.card .research-brief{font-size:0.82rem;color:var(--text-secondary);margin-top:8px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.card .student-count{font-size:0.78rem;color:var(--coral);font-weight:500;margin-top:6px}
-.detail-panel{background:var(--bg-card);border-radius:var(--radius-lg);padding:32px;box-shadow:var(--shadow-card);animation:fadeIn 0.3s ease}
-@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
-.detail-header{display:flex;gap:24px;margin-bottom:28px;flex-wrap:wrap}
-.detail-avatar{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--coral-light),var(--golden-light));display:flex;align-items:center;justify-content:center;font-size:2.4rem;color:#fff;font-weight:700;flex-shrink:0}
-.detail-info h2{font-size:1.6rem;font-weight:700;color:var(--text-primary)}
-.detail-info .title-text{font-size:0.95rem;color:var(--text-secondary);margin-top:2px}
-.detail-info .dept-badge{display:inline-block;font-size:0.82rem;font-weight:500;color:#fff;background:var(--teal);padding:4px 14px;border-radius:14px;margin-top:8px}
-.detail-info .ug-welcome{display:inline-block;font-size:0.8rem;font-weight:600;color:#2E7D32;background:#E8F5E9;padding:4px 14px;border-radius:14px;margin-top:8px;margin-left:6px}
-.detail-section{margin-bottom:24px}
-.detail-section h4{font-size:1rem;font-weight:650;color:var(--coral);margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid var(--bg-section);display:flex;align-items:center;gap:8px}
-.interests-tags{display:flex;flex-wrap:wrap;gap:8px}
-.interest-tag{background:linear-gradient(135deg,#FFF0E8,#FFE8D6);color:#C0503A;padding:6px 14px;border-radius:20px;font-size:0.84rem;font-weight:500}
-.background-text{font-size:0.9rem;color:var(--text-secondary);line-height:1.7;background:var(--bg-section);padding:16px 20px;border-radius:var(--radius-sm)}
-.student-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
-.student-card{background:var(--bg-section);padding:14px 16px;border-radius:var(--radius-sm);border-left:3px solid var(--golden)}
-.student-card .s-name{font-weight:600;font-size:0.92rem;color:var(--text-primary)}
-.student-card .s-topic{font-size:0.78rem;color:var(--text-muted);margin-top:2px}
-.advice-section{margin-top:48px;background:linear-gradient(135deg,#FFF8F0,#FFF3E8);border-radius:var(--radius-lg);padding:36px 32px;border:2px solid #F0D8C0}
-.advice-section h3{font-size:1.4rem;font-weight:700;color:var(--text-primary);margin-bottom:20px}
-.advice-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
-.advice-card{background:#fff;padding:20px;border-radius:var(--radius-sm);box-shadow:var(--shadow-soft)}
-.advice-card h4{font-size:1rem;color:var(--coral);margin-bottom:8px}
-.advice-card p{font-size:0.88rem;color:var(--text-secondary);line-height:1.6}
-.back-btn{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;background:var(--bg-card);border:2px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:0.9rem;font-weight:550;color:var(--text-secondary);transition:var(--transition);margin-bottom:18px}
-.back-btn:hover{border-color:var(--coral);color:var(--coral)}
-.stats-bar{display:flex;flex-wrap:wrap;gap:14px;margin-bottom:24px}
-.stat-item{background:var(--bg-card);padding:12px 20px;border-radius:var(--radius-sm);box-shadow:var(--shadow-soft);font-size:0.88rem}
-.stat-item strong{color:var(--coral);font-size:1.3rem}
-.data-source{margin-bottom:16px;padding:10px 16px;background:#E8F5E9;border-radius:var(--radius-sm);font-size:0.82rem;color:#2E7D32;border-left:3px solid #4CAF50}
-.data-source2{margin-bottom:16px;padding:10px 16px;background:#FFF8E1;border-radius:var(--radius-sm);font-size:0.82rem;color:#8D6E00;border-left:3px solid var(--golden)}
-.data-source3{margin-bottom:20px;padding:10px 16px;background:#FFF3F0;border-radius:var(--radius-sm);font-size:0.82rem;color:#C0503A;border-left:3px solid var(--coral)}
-.footer{text-align:center;padding:28px;color:var(--text-muted);font-size:0.82rem;border-top:1px solid var(--border);margin-top:20px}
-@media(max-width:640px){.header h1{font-size:1.5rem}.card-grid{grid-template-columns:1fr}.detail-header{flex-direction:column;align-items:center;text-align:center}}
+.card{background:var(--surface);border-radius:var(--radius);padding:20px 22px;cursor:pointer;transition:var(--transition);border:1px solid var(--border);box-shadow:var(--shadow-sm);position:relative}
+.card:hover{border-color:#cdd5ee;box-shadow:var(--shadow-md);transform:translateY(-1px)}
+.card .card-icon{font-size:1.6rem;margin-bottom:6px;opacity:0.85}
+.card h3{font-size:1rem;font-weight:600;color:var(--ink);margin-bottom:2px;letter-spacing:-0.01em}
+.card .subtitle{font-size:0.8rem;color:var(--muted);font-weight:400}
+.card .cn-name{font-size:0.82rem;color:var(--accent);font-weight:550}
+.card .dept-tag{display:inline-block;font-size:0.75rem;font-weight:500;color:var(--muted);background:var(--divider);padding:2px 10px;border-radius:10px;margin-top:6px}
+.card .research-brief{font-size:0.8rem;color:var(--ink-light);margin-top:8px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card .student-count{font-size:0.78rem;color:var(--accent);font-weight:500;margin-top:6px}
+.prof-card .ug-badge{position:absolute;top:10px;right:10px;background:#eef7ee;color:#2d6a2d;font-size:0.7rem;font-weight:550;padding:2px 8px;border-radius:8px}
+.detail-panel{background:var(--surface);border-radius:var(--radius-lg);padding:32px;border:1px solid var(--border);box-shadow:var(--shadow-sm);animation:fadeIn 0.25s ease}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.detail-header{display:flex;gap:22px;margin-bottom:26px;flex-wrap:wrap;align-items:center}
+.detail-avatar{width:80px;height:80px;border-radius:50%;background:var(--ink);display:flex;align-items:center;justify-content:center;font-size:2rem;color:#fff;font-weight:600;flex-shrink:0;letter-spacing:-0.02em}
+.detail-info h2{font-size:1.5rem;font-weight:650;color:var(--ink);letter-spacing:-0.01em}
+.detail-info .title-text{font-size:0.9rem;color:var(--muted);margin-top:2px}
+.detail-info .dept-badge{display:inline-block;font-size:0.78rem;font-weight:500;color:var(--accent);background:var(--accent-light);padding:3px 12px;border-radius:10px;margin-top:6px}
+.detail-info .ug-welcome{display:inline-block;font-size:0.76rem;font-weight:550;color:#2d6a2d;background:#eef7ee;padding:3px 12px;border-radius:10px;margin-top:6px;margin-left:6px}
+.detail-section{margin-bottom:22px}
+.detail-section h4{font-size:0.92rem;font-weight:600;color:var(--ink);margin-bottom:10px;padding-bottom:6px;border-bottom:1.5px solid var(--divider);display:flex;align-items:center;gap:6px;letter-spacing:-0.01em}
+.interests-tags{display:flex;flex-wrap:wrap;gap:7px}
+.interest-tag{background:var(--accent-light);color:var(--accent-dark);padding:5px 12px;border-radius:8px;font-size:0.82rem;font-weight:500}
+.background-text{font-size:0.88rem;color:var(--ink-light);line-height:1.7;background:var(--bg);padding:16px 18px;border-radius:var(--radius-sm);border:1px solid var(--divider)}
+.student-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.student-card{background:var(--bg);padding:12px 14px;border-radius:var(--radius-sm);border:1px solid var(--divider)}
+.student-card .s-name{font-weight:600;font-size:0.88rem;color:var(--ink)}
+.student-card .s-topic{font-size:0.76rem;color:var(--muted);margin-top:2px}
+.advice-section{margin-top:44px;background:var(--surface);border-radius:var(--radius-lg);padding:32px;border:1px solid var(--border);box-shadow:var(--shadow-sm)}
+.advice-section h3{font-size:1.2rem;font-weight:650;color:var(--ink);margin-bottom:18px;letter-spacing:-0.01em}
+.advice-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.advice-card{background:var(--bg);padding:18px 20px;border-radius:var(--radius);border:1px solid var(--divider)}
+.advice-card h4{font-size:0.9rem;font-weight:600;color:var(--ink);margin-bottom:6px}
+.advice-card p{font-size:0.84rem;color:var(--ink-light);line-height:1.6}
+.back-btn{display:inline-flex;align-items:center;gap:5px;padding:8px 18px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:0.85rem;font-weight:500;color:var(--ink-light);transition:var(--transition);margin-bottom:16px}
+.back-btn:hover{border-color:var(--accent);color:var(--accent);background:var(--accent-light)}
+.stats-bar{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:22px}
+.stat-item{background:var(--surface);padding:10px 18px;border-radius:var(--radius-sm);border:1px solid var(--border);font-size:0.84rem;color:var(--ink-light)}
+.stat-item strong{color:var(--accent);font-size:1.2rem;font-weight:650}
+.data-source{margin-bottom:12px;padding:10px 16px;background:#f0f6f0;border-radius:var(--radius-sm);font-size:0.8rem;color:#3a6b3a;border:1px solid #d8e8d8}
+.data-source2{margin-bottom:12px;padding:10px 16px;background:#faf8f0;border-radius:var(--radius-sm);font-size:0.8rem;color:#7a6e30;border:1px solid #e8e2d0}
+.data-source3{margin-bottom:18px;padding:10px 16px;background:#fdf5f5;border-radius:var(--radius-sm);font-size:0.8rem;color:#8b4040;border:1px solid #f0d8d8}
+.footer{text-align:center;padding:24px;color:var(--muted);font-size:0.8rem;border-top:1px solid var(--divider);margin-top:20px}
+@media(max-width:640px){.header h1{font-size:1.5rem}.card-grid{grid-template-columns:1fr}.detail-header{flex-direction:column;align-items:flex-start}}
 </style>
 </head>
 <body>
