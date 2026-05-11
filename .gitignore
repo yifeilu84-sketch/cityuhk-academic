@@ -1,3 +1,34 @@
-# Helper scripts used during development - not needed for deployment
-*.js
-!index.html
+# Dependencies
+node_modules/
+
+# Claude internal files
+.claude/
+
+# Raw data & debug scripts
+*-raw.*
+*_raw.*
+*-backup-*
+*_backup_*
+_prof-urls.txt
+_debug-*.js
+_check-*.js
+_fix-*.js
+_remove-*.js
+_inject-*.js
+_stats.js
+_find-*.js
+extract-class.mjs
+
+# Data & parse outputs
+*.json
+!package.json
+
+# Scraped content
+scraped/
+pdftxt/
+screenshot.png
+
+# Test files
+test-*.html
+old-version-test.html
+new-d-test.txt

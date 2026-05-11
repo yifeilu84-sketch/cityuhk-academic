@@ -109,6 +109,23 @@ body{font-family:'Inter','Segoe UI','PingFang SC','Microsoft YaHei',-apple-syste
 .feedback-card .btn-close:hover{opacity:0.85}
 .feedback-link{display:inline-flex;align-items:center;gap:4px;color:var(--accent);text-decoration:none;font-weight:500;cursor:pointer;font-size:0.8rem}
 .feedback-link:hover{text-decoration:underline}
+.welcome-modal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.55);display:flex;align-items:center;justify-content:center;z-index:9999;animation:fadeIn 0.25s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.welcome-card{background:var(--surface);border-radius:var(--radius-lg);padding:36px 32px 28px;max-width:480px;width:92%;box-shadow:0 24px 64px rgba(0,0,0,0.35);max-height:85vh;overflow-y:auto;animation:slideUp 0.3s ease}
+@keyframes slideUp{from{transform:translateY(20px);opacity:0}to{transform:translateY(0);opacity:1}}
+.welcome-card h2{font-size:1.2rem;margin-bottom:6px;color:var(--accent)}
+.welcome-card .welcome-subtitle{font-size:0.78rem;color:var(--text-muted);margin-bottom:20px}
+.welcome-card .welcome-section{margin-bottom:18px}
+.welcome-card .welcome-section h3{font-size:0.92rem;margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.welcome-card .welcome-section p,.welcome-card .welcome-section li{font-size:0.82rem;color:var(--text-secondary);line-height:1.7}
+.welcome-card .welcome-section ul{padding-left:18px;margin:4px 0}
+.welcome-card .welcome-section li{margin-bottom:2px}
+.welcome-card .wechat-id{font-size:1.3rem;font-weight:700;color:var(--accent);padding:8px 16px;background:var(--accent-light);border-radius:8px;user-select:all;display:inline-block;margin:8px 0}
+.welcome-card .btn-row{display:flex;gap:10px;justify-content:center;margin-top:20px}
+.welcome-card .btn-primary{padding:10px 28px;background:var(--accent);color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:0.9rem;font-weight:600;transition:var(--transition)}
+.welcome-card .btn-primary:hover{opacity:0.88}
+.welcome-card .btn-ghost{padding:10px 20px;background:transparent;color:var(--text-secondary);border:1px solid var(--border);border-radius:8px;cursor:pointer;font-size:0.85rem;transition:var(--transition)}
+.welcome-card .btn-ghost:hover{background:var(--surface-alt);border-color:var(--text-muted)}
 
 /* Department list */
 .dept-list{display:flex;flex-direction:column;gap:10px}
@@ -226,7 +243,8 @@ body{font-family:'Inter','Segoe UI','PingFang SC','Microsoft YaHei',-apple-syste
     <div class="sidebar-stats" id="sidebarStats"></div>
     <p class="sidebar-credit" style="font-size:0.92rem;opacity:1;font-weight:600">👤 制作人：吕逸飞 (Lyu Yifei)</p>
 	    <p class="sidebar-credit" style="font-size:0.78rem;opacity:0.85">数据采集与整理 · 2025/26</p>
-	    <p class="sidebar-credit" style="font-size:0.78rem;opacity:0.85"><a href="#" onclick="showFeedback()" style="color:var(--accent);font-weight:600">📮 问题反馈</a></p>
+	    <p class="sidebar-credit" style="font-size:0.78rem;opacity:0.85"><a href="#" onclick="showWelcome()" style="color:var(--text-inverse-muted);font-weight:500">📖 使用说明</a> · <a href="#" onclick="showFeedback()" style="color:var(--accent);font-weight:600">📮 问题反馈</a></p>
+		    <p class="sidebar-credit" style="font-size:0.78rem;opacity:0.85"><a href="https://github.com/yifeilu84-sketch/cityuhk-academic" target="_blank" style="color:#f0c040;font-weight:600;text-decoration:none">⭐ Star on GitHub</a></p>
   </div>
 </aside>
 
@@ -467,6 +485,45 @@ function showDetail(cid,did,pid){
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
+// Welcome modal
+function showWelcome(){
+  const overlay=document.createElement('div');
+  overlay.className='welcome-modal';
+  overlay.onclick=function(e){if(e.target===overlay)overlay.remove();};
+  overlay.innerHTML='<div class="welcome-card">\
+    <h2>🏛️ CityUHK 学术导航</h2>\
+    <p class="welcome-subtitle">香港城市大学 · 学院→学系→教授→课题组</p>\
+    <div class="welcome-section">\
+      <h3>📖 使用方法</h3>\
+      <ul>\
+        <li>左侧栏选择<b>学院</b>，查看下属学系及教授人数</li>\
+        <li>点击<b>学系卡片</b>进入教授列表，可按研究方向筛选</li>\
+        <li>点击<b>教授卡片</b>展开个人主页、谷歌学术、高被引论文</li>\
+        <li>顶部<b>搜索框</b>支持教授姓名、研究方向、学院/学系模糊搜索</li>\
+        <li>点击<b>左上角 ☰</b> 可折叠/展开侧边栏（手机版自动折叠）</li>\
+      </ul>\
+    </div>\
+    <div class="welcome-section">\
+      <h3>📮 问题反馈</h3>\
+      <p>如发现数据错误、链接失效或有任何建议，欢迎添加微信：</p>\
+      <div class="wechat-id">💬 L18617192008</div>\
+      <p style="font-size:0.72rem;color:var(--text-muted);margin-top:4px">备注：CityUHK 学术导航反馈</p>\
+    </div>\
+    <div class="welcome-section">\
+      <h3>👤 制作人</h3>\
+      <p>吕逸飞 (Lyu Yifei) · 数据采集与整理 · 2025/26</p>\
+      <p style="margin-top:6px">\
+        <a href="https://github.com/yifeilu84-sketch/cityuhk-academic" target="_blank" style="color:var(--accent);font-weight:600;text-decoration:none;display:inline-flex;align-items:center;gap:4px">⭐ 给项目点个 Star &nbsp;→ GitHub</a>\
+      </p>\
+    </div>\
+    <div class="btn-row">\
+      <button class="btn-primary" onclick="this.closest(\'.welcome-modal\').remove()">开始使用</button>\
+      <button class="btn-ghost" onclick="this.closest(\'.welcome-modal\').remove()">关闭</button>\
+    </div>\
+  </div>';
+  document.body.appendChild(overlay);
+}
+
 // Feedback modal
 function showFeedback(){
   const overlay=document.createElement('div');
@@ -480,6 +537,10 @@ function showFeedback(){
 document.addEventListener('DOMContentLoaded',()=>{
   buildSearchIndex();
   showColleges();
+  if(!localStorage.getItem('welcomeShown')){
+    localStorage.setItem('welcomeShown','1');
+    setTimeout(showWelcome,400);
+  }
 });
 </script>
 </body>
