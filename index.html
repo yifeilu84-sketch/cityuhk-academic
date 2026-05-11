@@ -537,10 +537,7 @@ function showFeedback(){
 document.addEventListener('DOMContentLoaded',()=>{
   buildSearchIndex();
   showColleges();
-  if(!localStorage.getItem('welcomeShown')){
-    localStorage.setItem('welcomeShown','1');
-    setTimeout(showWelcome,400);
-  }
+  setTimeout(showWelcome,400);
 });
 </script>
 </body>
